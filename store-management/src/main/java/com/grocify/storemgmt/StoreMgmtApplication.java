@@ -1,4 +1,4 @@
-package com.grocify.usermgmt;
+package com.grocify.storemgmt;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,10 +12,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaAuditing
 @EntityScan("com.grocify.commonlibs.*")
 @ComponentScan(basePackages = "com.grocify.*")
-public class GrocifyUserManagementApplication {
+public class StoreMgmtApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GrocifyUserManagementApplication.class, args);
+		SpringApplication.run(StoreMgmtApplication.class, args);
 	}
 
 }

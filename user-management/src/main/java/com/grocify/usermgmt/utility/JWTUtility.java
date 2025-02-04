@@ -15,7 +15,7 @@ public class JWTUtility {
         return Jwts.builder()
                 .claim("firstName", userDTO.getFirstName())
                 .setIssuer(userDTO.getEmailId())
-                .setId(userDTO.getEmailId())
+                .setId(String.valueOf(userDTO.getId()))
                 .setIssuedAt(Date.from(Instant.now()))
                 .setExpiration(Date.from(Instant.now().plus(3, ChronoUnit.HOURS)))
                 .compact();

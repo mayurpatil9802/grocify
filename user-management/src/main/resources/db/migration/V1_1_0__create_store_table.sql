@@ -1,5 +1,5 @@
 CREATE TABLE `grocify`.`grocery_store` (
-  `id` BIGINT(20) NOT NULL,
+  `id` BIGINT(20) NOT NULL ,
   `name` VARCHAR(50) NULL,
   `address` VARCHAR(50) NULL,
   `gst_no` VARCHAR(20) NOT NULL,

@@ -1,6 +1,5 @@
 package com.grocify.commonlibs.entity;
 
-import com.grocify.commonlibs.enums.UserRole;
 import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -13,29 +12,34 @@ import java.time.LocalDate;
 import java.util.Map;
 
 @Entity
-@Table(name = "user")
 @Data
+@Table(name = "product_detail")
 @EntityListeners(AuditingEntityListener.class)
-public class UserEntity {
+public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String emailId;
+    private String name;
 
-    private String firstName;
+    private String description;
 
-    private String lastName;
+    private int price;
 
-    private String mobileNo;
+    private String unit;
 
-    private String address;
+    private int availableUnit;
 
-    private String password;
+    private Long storeId;
 
-    @Enumerated(EnumType.STRING)
-    private UserRole role;
+    @Type(JsonType.class)
+    @Column(columnDefinition = "json")
+    private Map<String, String> metadata;
+
+    private boolean status;
+
+    private String imageUrl;
 
     @CreationTimestamp
     private LocalDate createdAt;
@@ -43,12 +47,8 @@ public class UserEntity {
     @UpdateTimestamp
     private LocalDate updatedAt;
 
-    private LocalDate lastLogin;
-
-    private Boolean status;
-
-    @Type(JsonType.class)
-    @Column(columnDefinition = "json")
-    private Map<String, String> metadata;
 
 }
+
+
+

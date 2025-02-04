@@ -21,7 +21,7 @@ public class SignupRequest {
 
     private String password;
 
-    private String confirmPassword;
+//    private String confirmPassword;
 
     private Map<String, String> metadata;
 

@@ -53,9 +53,9 @@ public class AuthRequestValidator {
                         "At least one special character,  You can remove this condition by removing\n");
             }
 
-            if (!signupRequest.getPassword().equals(signupRequest.getConfirmPassword())) {
-                throw new InvalidRequestException("Password do not match with conform password.");
-            }
+//            if (!signupRequest.getPassword().equals(signupRequest.getConfirmPassword())) {
+//                throw new InvalidRequestException("Password do not match with conform password.");
+//            }
         } else {
             throw new InvalidRequestException("Invalid password. Email cannot be null or blank");
         }
