@@ -26,9 +26,18 @@ public class ProductController {
         return productService.insertProductData(storeId, createProductRequest);
     }
 
-    @GetMapping
+    @GetMapping("/abc")
     public List<ProductResponse> getAllProductFromStore(@PathVariable Long storeId){
         return productService.getAllProductsFromStore(storeId);
+    }
+    @GetMapping("/{productId}")
+    public ProductResponse getSingleProduct(@PathVariable Long productId){
+        return productService.getSingleProductDetail(productId);
+    }
+
+    @GetMapping
+    public List<ProductResponse> getAllProduct(){
+        return productService.getAllProducts();
     }
 
     @PutMapping("/{productId}")

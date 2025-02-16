@@ -3,6 +3,7 @@ package com.grocify.usermgmt.exception.handler;
 
 
 import com.grocify.commonlibs.model.response.GrocifyErrorResponse;
+import com.grocify.commonlibs.security.InvalidJWTException;
 import com.grocify.usermgmt.exception.InvalidCredentialsException;
 import com.grocify.usermgmt.exception.InvalidRequestException;
 import com.grocify.usermgmt.exception.UserNotFoundException;
@@ -29,4 +30,5 @@ public class GrocifyExceptionHandler {
     public ResponseEntity<GrocifyErrorResponse> handleInvalidRequestException(InvalidRequestException exception) {
         return new ResponseEntity<>(GrocifyErrorResponse.builder().message(exception.getMessage()).errorCode(HttpStatus.BAD_REQUEST.value()).build(), HttpStatusCode.valueOf(HttpStatus.BAD_REQUEST.value()));
     }
+
 }

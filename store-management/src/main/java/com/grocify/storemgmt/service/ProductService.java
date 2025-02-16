@@ -127,4 +127,19 @@ public class ProductService {
 		String[] fileNameParts = originalFileName.split("\\.");
 		return storeId + "/" + productId + "." + fileNameParts[1];
 	}
+
+	public List<ProductResponse> getAllProducts() {
+		return productDao.getAllActiveProducts().stream()
+				.map(product -> productMapper.productDTOToProductResponse(product))
+				.toList();
+	}
+
+	public ProductResponse getSingleProductDetail(Long productId) {
+		Optional<ProductDTO> productDTOOptional = productDao.getProductDetail(productId);
+		if (productDTOOptional.isEmpty()) {
+			throw new RuntimeException("Provided product id is not present");
+		}
+		return productMapper.productDTOToProductResponse(productDTOOptional.get());
+
+	}
 }

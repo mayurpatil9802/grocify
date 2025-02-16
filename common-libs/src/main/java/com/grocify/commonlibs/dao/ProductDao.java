@@ -37,6 +37,12 @@ public class ProductDao {
 				.toList();
 	}
 
+	public List<ProductDTO> getAllActiveProducts() {
+		return productRepository.findAll().stream()
+				.map(product -> productMapper.productEntityToProductDTO(product))
+				.toList();
+	}
+
 	public ProductDTO updateProductDetails(ProductDTO productDTO) {
 		ProductEntity productEntity = productMapper.productDTOToProductEntity(productDTO);
 		productEntity.setId(productDTO.getId());

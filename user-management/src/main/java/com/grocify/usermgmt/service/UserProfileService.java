@@ -2,6 +2,8 @@ package com.grocify.usermgmt.service;
 
 import com.grocify.commonlibs.dao.AuthDao;
 import com.grocify.commonlibs.dto.UserDTO;
+import com.grocify.commonlibs.entity.UserEntity;
+import com.grocify.commonlibs.model.request.UserPasswordUpdateRequest;
 import com.grocify.commonlibs.model.request.UserProfileUpdateRequest;
 import com.grocify.commonlibs.model.response.UserResponse;
 import com.grocify.usermgmt.exception.UserNotFoundException;
@@ -61,4 +63,42 @@ public class UserProfileService {
         return responseBuilder.userDTOToUserResponse(userDTO);
     }
 
+	public UserResponse updateAddress(Long id, String userProfileUpdateRequest) {
+
+        Optional<UserDTO> existingUserDetails = authDao.getUserById(id);
+
+        if (existingUserDetails.isEmpty()) {
+            throw new UserNotFoundException("User with provided emailId is not present");
+        }
+        UserDTO userDTO = existingUserDetails.get();
+        userDTO.setAddress(userProfileUpdateRequest);
+        userDTO.setStatus(Boolean.TRUE);
+        userDTO = authDao.updateUserDetails(userDTO);
+        return responseBuilder.userDTOToUserResponse(userDTO);
+	}
+
+    public UserResponse getUserProfile(Long userId) {
+
+        Optional<UserDTO> userDTO=authDao.getUserById(userId);
+        if (userDTO.isEmpty()) {
+            throw new UserNotFoundException("User with provided emailId is not present");
+        }
+        return responseBuilder.userDTOToUserResponse(userDTO.get());
+    }
+
+    public UserResponse updateUserPassword(Long id, UserPasswordUpdateRequest userProfileUpdateRequest) {
+        Optional<UserDTO> existingUserDetails = authDao.getUserById(id);
+
+        if (existingUserDetails.isEmpty()) {
+            throw new UserNotFoundException("User with provided emailId is not present");
+        }
+
+        UserDTO userDTO = existingUserDetails.get();
+
+        userDTO.setPassword(userProfileUpdateRequest.getPassword());
+        userDTO.setStatus(true);
+        userDTO = authDao.updateUserDetails(userDTO);
+        return responseBuilder.userDTOToUserResponse(userDTO);
+
+    }
 }
