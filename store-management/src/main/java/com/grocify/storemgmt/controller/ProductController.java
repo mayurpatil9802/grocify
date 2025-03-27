@@ -13,8 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-@CrossOrigin(origins = "*")
-@RestController
+@CrossOrigin(origins = "http://localhost:3000") // Allow frontend requests@RestController
 @RequestMapping("/store/{storeId}/product")
 public class ProductController {
 

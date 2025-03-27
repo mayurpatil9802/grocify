@@ -1,12 +1,14 @@
 package com.grocify.storemgmt.exception;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
-@AllArgsConstructor
 public class StoreNotFoundException extends RuntimeException{
 
-    private String message;
+    private final String message;
 
+    public StoreNotFoundException(String message) {
+        super(message);
+        this.message = message;
+    }
 }

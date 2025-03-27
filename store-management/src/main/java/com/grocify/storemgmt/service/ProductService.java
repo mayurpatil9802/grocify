@@ -93,9 +93,9 @@ public class ProductService {
 
 
 		String filePath = buildImagePath(Objects.requireNonNull(multipartFile.getOriginalFilename()), storeId, productId);
-    	Files.createDirectories(Path.of("src/main/resources/" + storeId));
+    	Files.createDirectories(Path.of("store-management/src/main/java/com/grocify/storemgmt/src/" + storeId));
 		
-		Files.write(Path.of("src/main/resources/" + filePath), multipartFile.getBytes());
+		Files.write(Path.of("store-management/src/main/java/com/grocify/storemgmt/src/" + filePath), multipartFile.getBytes());
 
 		ProductDTO existingProductDetails = existingProductDetailsOptional.get();
 		existingProductDetails.setStatus(true);
@@ -115,11 +115,11 @@ public class ProductService {
 
 		ProductDTO existingProductDetails = existingProductDetailsOptional.get();
 
-		InputStream inputStream = new FileInputStream("src/main/resources/" + existingProductDetails.getImageURL());
+		InputStream inputStream = new FileInputStream("store-management/src/main/java/com/grocify/storemgmt/src/" + existingProductDetails.getImageURL());
 		InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.IMAGE_JPEG);
-		headers.setContentLength(Files.size(Paths.get("src/main/resources/" + existingProductDetails.getImageURL())));
+		headers.setContentLength(Files.size(Paths.get("store-management/src/main/java/com/grocify/storemgmt/src/" + existingProductDetails.getImageURL())));
 		return new ResponseEntity<>(inputStreamResource, headers, HttpStatus.OK);
 	}
 

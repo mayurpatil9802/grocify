@@ -12,10 +12,8 @@ import com.grocify.usermgmt.utility.ResponseBuilder;
 import com.grocify.usermgmt.validator.AuthRequestValidator;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
-import java.beans.JavaBean;
 import java.util.Optional;
 
 
